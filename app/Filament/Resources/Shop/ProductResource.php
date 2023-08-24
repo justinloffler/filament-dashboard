@@ -294,4 +294,9 @@ class ProductResource extends Resource
     {
         return static::$model::whereColumn('qty', '<', 'security_stock')->count();
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Products');
+    }
 }

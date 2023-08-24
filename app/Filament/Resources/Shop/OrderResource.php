@@ -323,4 +323,9 @@ class OrderResource extends Resource
                 ->columnSpan('full'),
         ];
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Orders');
+    }
 }
