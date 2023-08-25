@@ -44,7 +44,7 @@ class AddressForm extends Forms\Components\Field
                     Forms\Components\Select::make('country')
                         ->searchable()
                         ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
-                        ->getOptionLabelUsing(fn ($value): ?string => Country::find($value)?->getAttribute('name')),
+                        ->getOptionLabelUsing(fn ($value): ?string => Country::find($value)?->getAttribute('name'))
                 ]),
             Forms\Components\TextInput::make('street')
                 ->label('Street address'),
@@ -66,8 +66,11 @@ class AddressForm extends Forms\Components\Field
         $this->afterStateHydrated(function (AddressForm $component, ?Model $record) {
             $address = $record?->getRelationValue($this->getRelationship());
 
+            // Set the default country to the ID of Australia if $address does not exist.
+            $defaultCountryId = Country::where('name', 'Tunisia')->value('id');
+
             $component->state($address ? $address->toArray() : [
-                'country' => null,
+                'country' => $defaultCountryId,
                 'street' => null,
                 'city' => null,
                 'state' => null,
@@ -77,6 +80,7 @@ class AddressForm extends Forms\Components\Field
 
         $this->dehydrated(false);
     }
+
 
     public function getRelationship(): string
     {
