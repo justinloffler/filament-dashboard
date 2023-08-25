@@ -32,22 +32,24 @@ class PaymentsRelationManager extends RelationManager
                 Forms\Components\Select::make('currency')
                     ->options(collect(Currency::getCurrencies())->mapWithKeys(fn ($item, $key) => [$key => data_get($item, 'name')]))
                     ->searchable()
+                    ->default('Tunisia dinar')
                     ->required(),
 
                 Forms\Components\Select::make('provider')
                     ->options([
+                        'none' => 'None',
                         'stripe' => 'Stripe',
                         'paypal' => 'PayPal',
                     ])
                     ->required()
+                    ->default('none')
                     ->native(false),
 
                 Forms\Components\Select::make('method')
                     ->options([
-                        'credit_card' => 'Credit card',
-                        'bank_transfer' => 'Bank transfer',
-                        'paypal' => 'PayPal',
+                        'cash' => 'Cash'
                     ])
+                    ->default('cash')
                     ->required()
                     ->native(false),
             ]);
