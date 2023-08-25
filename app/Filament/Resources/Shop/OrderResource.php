@@ -313,7 +313,8 @@ class OrderResource extends Resource
                 ->searchable()
                 ->getSearchResultsUsing(fn (string $query) => Currency::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
                 ->getOptionLabelUsing(fn ($value): ?string => Currency::find($value)?->getAttribute('name'))
-                ->required(),
+                ->required()
+                ->default('Tunisian dinar'),
 
             AddressForm::make('address')
                 ->columnSpan('full'),
