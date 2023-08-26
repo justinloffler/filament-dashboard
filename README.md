@@ -100,3 +100,5 @@ You're ready to go! Visit the url in your browser, and login with:
 #### MorphToMany
 - BrandResource\RelationManagers\AddressRelationManager
 - CustomerResource\RelationManagers\AddressRelationManager
+
+### Activity Log
