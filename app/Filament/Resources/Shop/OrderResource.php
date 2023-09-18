@@ -81,19 +81,19 @@ class OrderResource extends Resource
                         'danger' => 'cancelled',
                         'warning' => 'processing',
                         'success' => fn ($state) => in_array($state, ['delivered', 'shipped']),
-                    ]),
+                    ]),/*
                 Tables\Columns\TextColumn::make('currency')
                     ->getStateUsing(fn ($record): ?string => Currency::find($record->currency)?->name ?? null)
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(),*/
                 Tables\Columns\TextColumn::make('total_price')
                     ->searchable()
                     ->sortable()
                     ->summarize([
                         Tables\Columns\Summarizers\Sum::make()
                             ->money(),
-                    ]),
+                    ]),/*
                 Tables\Columns\TextColumn::make('shipping_price')
                     ->label('Shipping cost')
                     ->searchable()
@@ -102,7 +102,7 @@ class OrderResource extends Resource
                     ->summarize([
                         Tables\Columns\Summarizers\Sum::make()
                             ->money(),
-                    ]),
+                    ]),*/
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Order Date')
                     ->date()
