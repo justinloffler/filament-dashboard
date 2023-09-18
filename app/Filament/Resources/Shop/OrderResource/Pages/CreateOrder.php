@@ -20,6 +20,14 @@ class CreateOrder extends CreateRecord
     {
         $order = $this->record;
 
+        // get the total price of the order and save to the order total_price field.
+        $total_price = 0;
+        foreach ($order->items as $item) {
+            $total_price += $item->unit_price * $item->qty;
+        }
+        $order->total_price = $total_price;
+        $order->save();
+
         Notification::make()
             ->title('New order')
             ->icon('heroicon-o-shopping-bag')
