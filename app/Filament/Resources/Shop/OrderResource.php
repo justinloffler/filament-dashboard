@@ -301,7 +301,7 @@ class OrderResource extends Resource
             Forms\Components\Select::make('status')
                 ->options([
                     'new' => 'New',
-                    'complete' => 'Complete',
+                    'completed' => 'Completed',
                     'paid' => 'Paid',
                     'refund' => 'Refund',
                 ])
