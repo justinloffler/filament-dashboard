@@ -18,7 +18,7 @@ return new class() extends Migration
             $table->foreignId('shop_customer_id')->nullable()->constrained()->nullOnDelete();
             $table->string('number', 32)->unique();
             $table->decimal('total_price', 12, 2)->nullable();
-            $table->enum('status', ['new', 'complete', 'paid', 'refund'])->default('new');
+            $table->enum('status', ['new', 'completed', 'paid', 'refund'])->default('new');
             $table->string('currency');
             $table->decimal('shipping_price')->nullable();
             $table->string('shipping_method')->nullable();
