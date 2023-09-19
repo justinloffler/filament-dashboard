@@ -301,10 +301,9 @@ class OrderResource extends Resource
             Forms\Components\Select::make('status')
                 ->options([
                     'new' => 'New',
-                    'processing' => 'Processing',
-                    'shipped' => 'Shipped',
-                    'delivered' => 'Delivered',
-                    'cancelled' => 'Cancelled',
+                    'complete' => 'Complete',
+                    'paid' => 'Paid',
+                    'refund' => 'Refund',
                 ])
                 ->required()
                 ->native(false),
