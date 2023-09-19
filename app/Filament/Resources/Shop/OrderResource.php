@@ -80,7 +80,7 @@ class OrderResource extends Resource
                     ->colors([
                         'danger' => 'cancelled',
                         'warning' => 'processing',
-                        'success' => fn ($state) => in_array($state, ['delivered', 'shipped']),
+                        'success' => fn ($state) => in_array($state, ['delivered', 'shipped', 'completed']),
                     ]),/*
                 Tables\Columns\TextColumn::make('currency')
                     ->getStateUsing(fn ($record): ?string => Currency::find($record->currency)?->name ?? null)

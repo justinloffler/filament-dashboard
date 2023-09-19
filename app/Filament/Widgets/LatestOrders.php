@@ -36,19 +36,19 @@ class LatestOrders extends BaseWidget
                     ->colors([
                         'danger' => 'cancelled',
                         'warning' => 'processing',
-                        'success' => fn ($state) => in_array($state, ['delivered', 'shipped']),
-                    ]),/*
+                        'success' => fn ($state) => in_array($state, ['delivered', 'shipped', 'completed']),
+                    ]),
                 Tables\Columns\TextColumn::make('currency')
                     ->getStateUsing(fn ($record): ?string => Currency::find($record->currency)?->name ?? null)
                     ->searchable()
-                    ->sortable(),*/
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('total_price')
                     ->searchable()
-                    ->sortable(),/*
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('shipping_price')
                     ->label('Shipping cost')
                     ->searchable()
-                    ->sortable(),*/
+                    ->sortable(),
             ])
             ->actions([
                 Tables\Actions\Action::make('open')
