@@ -41,10 +41,6 @@ class LatestOrders extends BaseWidget
                 Tables\Columns\TextColumn::make('total_price')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('shipping_price')
-                    ->label('Shipping cost')
-                    ->searchable()
-                    ->sortable(),
             ])
             ->actions([
                 Tables\Actions\Action::make('open')
