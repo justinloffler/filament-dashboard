@@ -42,11 +42,14 @@ class PaymentsRelationManager extends RelationManager
                     ->rules(['regex:/^\d{1,6}(\.\d{0,2})?$/'])
                     ->required(),
 
+                Forms\Components\Hidden::make('currency')
+                    ->default('Tunisian dinar'),
+/*
                 Forms\Components\Select::make('currency')
                     ->options(collect(Currency::getCurrencies())->mapWithKeys(fn ($item, $key) => [$key => data_get($item, 'name')]))
                     ->searchable()
                     ->required(),
-
+*/
                 Forms\Components\Select::make('provider')
                     ->options([
                         'stripe' => 'Stripe',

@@ -81,6 +81,7 @@ class CustomerResource extends Resource
                     ->searchable(isIndividual: true, isGlobal: false)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('country')
+                ->hidden(true)
                     ->getStateUsing(fn ($record): ?string => Country::find($record->addresses->first()?->country)?->name ?? null),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()

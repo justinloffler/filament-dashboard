@@ -307,16 +307,19 @@ class OrderResource extends Resource
                 ])
                 ->required()
                 ->native(false),
-
+                Forms\Components\Hidden::make('currency')
+                ->default('Tunisian dinar'),
+/*
             Forms\Components\Select::make('currency')
+                ->hidden(true)
                 ->searchable()
                 ->getSearchResultsUsing(fn (string $query) => Currency::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
                 ->getOptionLabelUsing(fn ($value): ?string => Currency::find($value)?->getAttribute('name'))
                 ->required()
                 ->default('Tunisian dinar'),
-
             AddressForm::make('address')
                 ->columnSpan('full'),
+*/
 
             Forms\Components\MarkdownEditor::make('notes')
                 ->columnSpan('full'),

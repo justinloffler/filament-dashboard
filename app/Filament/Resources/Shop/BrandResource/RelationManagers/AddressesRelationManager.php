@@ -27,11 +27,15 @@ class AddressesRelationManager extends RelationManager
 
                 Forms\Components\TextInput::make('state'),
 
+                Forms\Components\Hidden::make('country')
+                ->default('Tunisia'),
+/*
                 Forms\Components\Select::make('country')
                     ->searchable()
                     ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
                     ->getOptionLabelUsing(fn ($value): ?string => Country::find($value)?->getAttribute('name')),
-            ]);
+*/
+                ]);
     }
 
     public function table(Table $table): Table
